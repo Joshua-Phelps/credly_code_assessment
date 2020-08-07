@@ -10,7 +10,7 @@ class MarvelApi
     @conn = Faraday.new(url: MARVEL_API_ENDPOINT)
   end
 
-  def characters()
+  def characters
     ActiveSupport::JSON.decode(
       conn.get('characters', authentication_params)
       .body

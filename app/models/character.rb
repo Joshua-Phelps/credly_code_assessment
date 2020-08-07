@@ -1,6 +1,6 @@
 class Character < ApplicationRecord
 
-  # def self.all
-
-  # end 
+  def get_badges
+    
+  end 
 end
