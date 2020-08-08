@@ -12,12 +12,13 @@ class BadgesController < ApplicationController
   end 
 
   def create
-    byebug
     @character = Character.find(params[:character_id])
     if @character 
-       @character.add_badge(params[:badge_id]) 
+       badge = @character.issue_badge(params[:badge_id], @character.name, @character.id) 
+       badge && redirect_to character_path(@character)
     else
-
+      flash[:message] = "Something Went Wrong! Please Try Again."
+      render :new
     end 
   end
 

@@ -7,24 +7,29 @@ class AcclaimApi
 
   def initialize
     @conn = Faraday.new(url: ENDPOINT) do |faraday|
-      faraday.response :json, content_type: /\bjson$/ 
+      faraday.response :json, content_type: /\bjson$/
+      faraday.headers = headers 
       faraday.adapter Faraday.default_adapter
     end 
   end
 
   def get_badge_templates
-    conn.headers = headers
     results = conn.get('badge_templates')
     results.body['data'].map{|t| [t['name'], t['id']]}
   end
 
-  def post_badge(query_params)
-    conn.post('badges')
+  def get_issued_badges
+    results = conn.get('badges')
+  end 
+
+  def post_badge(body)
+    result = conn.post('badges', body.to_json)
+    result.body['data'] && result.body['data']
   end 
 
   def headers 
     auth_token = Base64.strict_encode64(ENV["CREDLY_AUTH_TOKEN"])+'='
-    headers = { 'Accept': 'application/json', 'Content-Type': 'applicaiton/json', 'Authorization': 'Basic ' + auth_token }
+    headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Basic ' + auth_token }
   end 
 
 end

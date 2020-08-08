@@ -11,11 +11,19 @@ class MarvelApi
   end
 
   def characters
+    limit = {limit: 100} 
     ActiveSupport::JSON.decode(
-      conn.get('characters', authentication_params)
+      conn.get('characters', limit.merge(authentication_params))
       .body
     )
   end
+
+  def get_character(id)
+    ActiveSupport::JSON.decode(
+      conn.get(`characters/#{id}`, authentication_params)
+      .body
+    )
+  end 
 
   private
 

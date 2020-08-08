@@ -7,5 +7,5 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     @badges = @character.get_badges
   end
-  
+
 end
