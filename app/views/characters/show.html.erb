@@ -1,4 +1,11 @@
 <h1><%= @character.name%></h1>
-
 <h3>My Badges</h3>
-<li></li>
+<% @badges.each do |badge| %>
+  <div class='badge-container'>
+    <h4><%= badge[:name] %></h4>
+     <%= link_to 'Accept Badge', badge[:accept_badge_url]  %>
+    <div>
+      <%= image_tag ( badge[:image_url] ) %>
+    </div>
+  </div>
+<% end %>

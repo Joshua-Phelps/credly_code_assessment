@@ -20,7 +20,20 @@ class AcclaimApi
 
   def get_issued_badges
     results = conn.get('badges')
+    results.body['data'] && results.body['data']
   end 
+
+  def get_badges_by_character(character_id)
+    issuer_earner_id = `filter=issuer_earner_id::#{character_id}`
+    results = conn.get('badges'+ issuer_earner_id)
+    badges = results.body['data'].map do |badge|
+      min_info_badge = {
+        name: badge['badge_template']['name'],
+        image_url: badge['image_url'],
+        accept_badge_url: badge['accept_badge_url'],
+      }
+    end 
+  end
 
   def post_badge(body)
     result = conn.post('badges', body.to_json)

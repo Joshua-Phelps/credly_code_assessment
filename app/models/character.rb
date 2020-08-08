@@ -1,12 +1,20 @@
 class Character < ApplicationRecord
 
-  def self.all
-    byebug
+  def self.all_badges
     badges = AcclaimApi.new.get_issued_badges
   end 
 
-  def get_badges
+  def my_badges
+    badges = AcclaimApi.new.get_badges_by_character(self.id)
+  end 
+
+  def self.get_badges
     # get badges for related character
+    characters = Character.all
+    badges = Character.all_badges
+    badges.each do |badge|
+      byebug
+    end 
   end 
 
   def issue_badge(badge_id, name, character_id)
