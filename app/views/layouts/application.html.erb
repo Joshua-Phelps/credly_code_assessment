@@ -10,7 +10,9 @@
   <body>
     <ul>
       <li><a href="/characters">Home</a></li>
-      <li><a href="/logout">Logout</a></li>
+      <li>
+        <%= link_to 'Logout', logout_path, method: "delete"  %>
+      </li>
     </ul>
     <%= yield %>
   </body>

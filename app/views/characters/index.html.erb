@@ -4,7 +4,6 @@
   <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>Earned Badges</th>
   </tr>
   <% @characters.each do |c| %>
     <tr>
@@ -14,7 +13,6 @@
       <td colspan="1">
         <%= link_to c.name, "characters/#{c.id}" %>
       </td>
-      <td></td>
     </tr>
   <% end %>
 </table>

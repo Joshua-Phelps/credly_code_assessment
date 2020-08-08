@@ -1,13 +1,8 @@
 class BadgesController < ApplicationController
 
-  def show
-    
-  end
-
   def new 
     @character = Character.find(params[:character_id])
-    # @user = User.find(session[:user_id])
-    @user = User.first
+    @user = User.find(session[:user_id])
     @badge_templates = @user.get_badge_templates
   end 
 
@@ -25,10 +20,6 @@ class BadgesController < ApplicationController
       flash[:message] = "Something Went Wrong! Please Try Again."
       render :new
     end 
-  end
-
-  def destroy
-    
   end
 
   private
