@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body {
+	text-align: center;
+}
+
 table,
 th {
 	border: 1px solid black;
@@ -23,4 +27,17 @@ td {
 	border-bottom: 1px solid black;
 	border-right: 1px solid black;
 	border-left: 1px solid black;
+}
+
+h1 {
+	text-align: center;
+}
+
+form {
+	display: inline-block;
+	height: 100px;
+}
+
+span {
+	padding: 10px;
 }

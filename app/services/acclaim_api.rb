@@ -15,7 +15,7 @@ class AcclaimApi
   def get_badge_templates
     conn.headers = headers
     results = conn.get('badge_templates')
-    results.body['data'].map{|t| {name: t['name'], id: t['id']}}
+    results.body['data'].map{|t| [t['name'], t['id']]}
   end
 
   def post_badge(query_params)
