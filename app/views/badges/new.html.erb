@@ -1,10 +1,13 @@
 <%= flash[:message] %>
 <h1><%= @character.name%></h1>
-<%= form_with(scope: :badge, url: "/characters/#{@character.id}/badges/", method: 'post') do |f| %>
-  <span>
-    <%= select_tag(:badge_id, options_for_select(@badge_templates)) %>
-  </span>
-  <span>
-    <%= f.submit "Give Badge" %>
-  </span>
-<% end %>
+<div class='form-container' >
+  <%= form_with(scope: :badge, url: "/characters/#{@character.id}/badges/", method: 'post') do |f| %>
+    <%= f.label :badges %>
+    <span>
+      <%= select_tag(:badge_id, options_for_select(@badge_templates)) %>
+    </span>
+    <span>
+      <%= f.submit "Give Badge" %>
+    </span>
+  <% end %>
+</div>

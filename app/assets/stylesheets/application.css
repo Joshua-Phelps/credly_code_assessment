@@ -16,17 +16,39 @@
 
 body {
 	text-align: center;
+	padding: 30px;
+	background: #c9e7f9;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+li {
+	/* float: left; */
+	display: inline-block;
+}
+
+a {
+	display: block;
+	padding: 8px;
+	/* background-color: #dddddd; */
 }
 
 table,
 th {
 	border: 1px solid black;
+	text-align: center;
 }
 
 td {
 	border-bottom: 1px solid black;
 	border-right: 1px solid black;
 	border-left: 1px solid black;
+	text-align: left;
 }
 
 h1 {
@@ -40,4 +62,14 @@ form {
 
 span {
 	padding: 10px;
+}
+
+.table-spacer {
+	width: 33%;
+}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
 }

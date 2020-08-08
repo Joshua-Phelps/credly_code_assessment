@@ -24,7 +24,7 @@ class AcclaimApi
   end 
 
   def get_badges_by_character(character_id)
-    issuer_earner_id = `filter=issuer_earner_id::#{character_id}`
+    issuer_earner_id = "?filter=issuer_earner_id::#{character_id}"
     results = conn.get('badges'+ issuer_earner_id)
     badges = results.body['data'].map do |badge|
       min_info_badge = {
